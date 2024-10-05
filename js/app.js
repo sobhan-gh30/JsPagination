@@ -78,13 +78,36 @@ function displayList(allUsersArray, usersContainer, rowsCount, currentPage) {
     })
 }
 
-displayList(listItems, userListContainer, rowsCount, currentPage)
+function setupPagination (allUsersArray, pagesContainer, rowsCount) {
+    let pageCount, btn
 
-for (let i = 1; i <= Math.ceil(listItems.length / rowsCount); i++) {
-    pageContainer = document.createElement("div")
-    pageContainer.classList.add("pageNumber")
-    pageContainer.innerHTML = `${i}`
-    pageContainer.setAttribute("onclick", `displayList(listItems, userListContainer, rowsCount, ${i})`)
-    paginationContainer.append(pageContainer)
+    pagesContainer.innerHTML = ''
+    pageCount = Math.ceil(allUsersArray.length / rowsCount)
 
+    for (let i = 1 ; i <= pageCount ; i++) {
+        btn = paginationButtonGenerator(i, allUsersArray)
+        pagesContainer.appendChild(btn)
+    }
 }
+function paginationButtonGenerator (page, allUsersArray) {
+    let button = document.createElement('button')
+    button.classList.add("pageNumber")
+    button.innerHTML = page
+
+    if (page === currentPage) {
+        button.classList.add('pageNumber-active')
+    }
+
+    button.addEventListener('click', function () {
+        currentPage = page
+        displayList(allUsersArray, userListContainer, rowsCount, currentPage)
+
+        let prevPage = document.querySelector('.pageNumber-active')
+        prevPage.classList.remove('pageNumber-active')
+        button.classList.add('pageNumber-active')
+    })
+    return button
+}
+
+setupPagination(listItems, paginationContainer, rowsCount)
+displayList(listItems, userListContainer, rowsCount, currentPage)

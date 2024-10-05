@@ -48,15 +48,25 @@ main{
     bottom: 2%;
 }
 .pageNumber{
-    width: 3rem;
-    height: 3rem;
-    margin: 1rem;
+    width: 2rem;
+    height: 2rem;
+    margin: 0.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #fff;
-    background-color: cornflowerblue;
+    color: #aaa;
+    border: 1px solid #aaa;
+    background: transparent;
     font-weight: bold;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     cursor: pointer;
+    transition: all 50ms ease-in-out;
+}
+.pageNumber:hover{
+    color: #9dbefa;
+    border: 1px solid #9DBEFAFF;
+}
+.pageNumber-active{
+    color: cornflowerblue;
+    border: 1px solid cornflowerblue;
 }
