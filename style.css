@@ -17,3 +17,27 @@ h1{
     margin: 0;
     color: #383838;
 }
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.list{
+    width: 100%;
+    max-width: 768px;
+    background-color: #FFF;
+    margin-top: 25px;
+}
+.pagination {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.item{
+    padding: 1.5rem;
+    margin-top: 1rem;
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+}
